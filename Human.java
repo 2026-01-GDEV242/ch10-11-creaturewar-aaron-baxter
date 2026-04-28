@@ -1,12 +1,15 @@
 
-
 /**
- * The Human class implements a wrapper for the base Creature class with the following additions
- * Implements a maximum/minimum strength for the creature type [20/5]
- * Implements a maximum/minimum hitpoint total for the creature type [25/5]
+ * Represents a basic human creature.
  * 
- * @author Bill Crosbie
- * @version 2025-04 v1.1
+ * Humans have moderate strength and hit points and do not possess
+ * any special attack abilities beyond the base Creature attack.
+ * 
+ * Strength range: 5–20
+ * Hit point range: 5–25
+ * 
+ * @author Aaron Baxter
+ * @version 2026.04.27
  */
 public class Human extends Creature
 {
@@ -33,13 +36,17 @@ public class Human extends Creature
         // max-min is range of values
         // range + min ensures that the values don't start at one.
         super(
-            Randomizer.nextInt(MAX_HUMAN_STR-MIN_HUMAN_STR)+MIN_HUMAN_STR,
-            Randomizer.nextInt(MAX_HUMAN_HP-MIN_HUMAN_HP)+MIN_HUMAN_HP        
+            Randomizer.nextInt(MAX_HUMAN_STR - MIN_HUMAN_STR)+ MIN_HUMAN_STR,
+            Randomizer.nextInt(MAX_HUMAN_HP - MIN_HUMAN_HP) + MIN_HUMAN_HP        
         );
-          
+
     }
-    
-    
+
+    @Override
+    public int attack(){
+        return super.attack();
+    }
+
     // attack() - not overridden because Humans generate basic damage
     // takeDamage(int) - not overridden, because Humans take all damage assigned to them
 

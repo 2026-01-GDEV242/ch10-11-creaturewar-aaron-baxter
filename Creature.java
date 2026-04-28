@@ -1,14 +1,10 @@
 
 /**
- * Abstract class Creature - 
- * The creature is the main class from which all other battling creatures derive.
- * It is the creature's job to maintain current health values in response to 
- * requests to takeDamage. It also must report if
- * the creature is alive or knocked out. The creature is also responsible for calculating
- * damage delivered based on the creature's strength (1 to str) 
+ * The Creature class is the base class for all combatants.
+ * It handles health, strength, and basic combat mechanics.
  * 
- * @author Crosbie
- * @version 2025-04 v1.0
+ * @author Aaron Baxter
+ * @version 2026.04.27
  */
 // we will learn what the abstract keyword does in a later chapter
 public abstract class Creature
@@ -39,8 +35,7 @@ public abstract class Creature
      * @return a value between 1 and str to be used to cause damage to another creature
      */
     public int attack(){
-        // TODO: implement a damage method
-        return 0;
+        return Randomizer.nextInt(str);
     }
     
     
@@ -49,8 +44,7 @@ public abstract class Creature
      * @return true when current hit point level is greater than zero
      */
     public boolean isAlive() {
-        // TODO: implement a method to report if the creature yet lives
-        return false; //change this
+        return hp > 0;
     }
     
     /**
@@ -58,8 +52,7 @@ public abstract class Creature
      * @return true when current hit point level is less than or equal to zero
      */
     public boolean isKnockedOut() {
-        //TODO: implement a method to report if the creature has been killed
-        return false; //change this
+        return hp <= 0;
     }
     
     
@@ -69,7 +62,9 @@ public abstract class Creature
      * @param damage value to remove from hit point count
      */
     public void takeDamage(int damage) {
-        // TODO: implement this
+        hp = hp - damage;
+        if (hp < 0) {
+            hp = 0;
+        }
     }
-    
 }

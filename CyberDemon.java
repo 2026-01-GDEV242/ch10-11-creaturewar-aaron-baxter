@@ -1,33 +1,41 @@
 
 /**
- * Write a description of class CyberDemon here.
+ * Represents a CyberDemon, a powerful type of Demon.
+ * 
+ * CyberDemons inherit demon attack behavior and have high
+ * strength and hit points.
+ * 
+ * Strength range: 20–40
+ * Hit point range: 25–100
  *
  * @author Aaron Baxter
  * @version 2026.04.27
  */
-public class CyberDemon
+public class CyberDemon extends Demon 
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private static final int MAX_HP = 100;
+    private static final int MIN_HP = 25;
+    private static final int MAX_STR = 40;
+    private static final int MIN_STR = 20;
 
     /**
-     * Constructor for objects of class CyberDemon
+     * Constructs a CyberDemon with randomized strength and hit points
+     * within the defined range.
      */
-    public CyberDemon()
-    {
-        // initialise instance variables
-        x = 0;
+    public CyberDemon() {
+        super(
+            Randomizer.nextInt(MAX_STR - MIN_STR) + MIN_STR,
+            Randomizer.nextInt(MAX_HP - MIN_HP) + MIN_HP
+        );
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Performs an attack using Demon attack behavior.
+     * 
+     * @return the total damage dealt
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    @Override
+    public int attack() {
+        return super.attack();
     }
 }

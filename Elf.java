@@ -1,33 +1,48 @@
 
 /**
- * Write a description of class Elf here.
+ * Represents an Elf creature with magical abilities.
+ * 
+ * Elves have a chance to deal double damage on attack due to
+ * their magical nature.
+ * 
+ * Strength range: 5–18
+ * Hit point range: 8–25
  *
  * @author Aaron Baxter
  * @version 2026.04.27
  */
-public class Elf
+public class Elf extends Creature
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private static final int MAX_HP = 25;
+    private static final int MIN_HP = 8;
+    private static final int MAX_STR = 18;
+    private static final int MIN_STR = 5;
 
     /**
-     * Constructor for objects of class Elf
+     * Constructs an Elf with randomized strength and hit points 
+     * within the defined elf range.
      */
     public Elf()
     {
-        // initialise instance variables
-        x = 0;
+        super(
+            Randomizer.nextInt(MAX_STR - MIN_STR) + MIN_STR,
+            Randomizer.nextInt(MAX_HP - MIN_HP) + MIN_HP
+        );
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Calculates attack with a 10% chance to double damage.
+     * @return total damage dealt
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    @Override
+    public int attack() {
+        int damage = super.attack();
+
+        // 10% chance for double damage
+        if (Randomizer.nextInt(10) == 1) {
+            damage = damage * 2;
+        }
+
+        return damage;
     }
 }

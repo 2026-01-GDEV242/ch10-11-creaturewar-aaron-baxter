@@ -1,12 +1,13 @@
 import java.util.Random;
 
 /**
- * A static utility class Singleton that maps random number generation 
- * from the range 0..limit -1
- * to the range 1..limit
+ * Utility class for generating random numbers.
  * 
- * @author Bill Crosbie
- * @version 2020-10 v1.0
+ * Provides a method to return a random integer within a specified range,
+ * simulating dice rolls used by creatures during combat.
+ * 
+ * @author Aaron Baxter
+ * @version 2026.04.27
  */
 public class Randomizer
 {

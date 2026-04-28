@@ -1,33 +1,41 @@
 
 /**
- * Write a description of class Demon here.
+ * Abstract class representing a Demon creature.
+ * 
+ * Demons have a chance to deal bonus damage in addition to their
+ * normal attack. This class is not meant to be instantiated directly,
+ * but extended by specific demon types.
  *
  * @author Aaron Baxter 
  * @version 2026.04.27
  */
-public class Demon
+public abstract class Demon extends Creature
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class Demon
+     * Constructs a Demon with the given strength and hit points.
+     * 
+     * @param str the strength of the demon
+     * @param hp the hit points of the demon
      */
-    public Demon()
+    public Demon(int str, int hp)
     {
-        // initialise instance variables
-        x = 0;
+        super(str, hp);
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Calculates attack damage with a 5% chance to add 50 bonus damage.
+     * @return the total damage dealt
      */
-    public int sampleMethod(int y)
+    @Override
+    public int attack()
     {
-        // put your code here
-        return x + y;
+        int damage = super.attack();
+
+        // 5% chance to add 50 damage
+        if (Randomizer.nextInt(20) == 1) {
+            damage = damage + 50;
+        }
+
+        return damage;
     }
 }
